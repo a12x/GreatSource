@@ -1,3 +1,9 @@
 .highlight {
 	background-color: #FF8080;
 }
+
+.secretnumber {
+  font-size: small;
+  font-weight: bold;
+  color: black;
+}
