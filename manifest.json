@@ -5,6 +5,10 @@
   "description": "Makes GradeSource suck less.",
   "version": "1.0",
 
+  "permissions": [
+    "storage"
+  ],
+  
   "web_accessible_resources": ["jquery-2.0.3.min.map"],
 
   "content_scripts": [
