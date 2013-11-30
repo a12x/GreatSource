@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+
+  "name": "GreatSource",
+  "description": "Makes GradeSource suck less.",
+  "version": "1.0",
+
+  "content_scripts": [
+    {
+      "matches": ["http://www.gradesource.com/*", "http://gradesource.com/*"],
+      "js": ["greatsource.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ]
+}
+
