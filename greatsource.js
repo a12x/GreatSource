@@ -11,7 +11,7 @@ var getTerm = function() {
 }
 
 var getSecretNumber = function() {
-  return "8811";
+  return "8489";
 }
 
 $('table:eq(3) tr:gt(2)').each(function() {
@@ -19,5 +19,11 @@ $('table:eq(3) tr:gt(2)').each(function() {
   if (secretNumber.text() === getSecretNumber()) {
     secretNumber.addClass('highlight');
     secretNumber.siblings().addClass('highlight');
+
+    var viewportHeight = document.body.clientHeight;
+    var secretNumberHeight = secretNumber.offset().top;
+    var offset = secretNumberHeight - viewportHeight/2;
+
+    $('html, body').animate({scrollTop:offset}, 1);
   }
 });
