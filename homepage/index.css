@@ -1,0 +1,27 @@
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+  display:block;
+}
+
+.site-header {
+  text-align: center;
+  font-size: 4.5em;
+  font-family: "Georgia";
+  font-weight: normal;
+  margin-bottom: 0px;
+}
+
+.content {
+  text-align: center;
+}
+
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+table {
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  border-spacing: 10px;
+}
