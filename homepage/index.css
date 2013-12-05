@@ -25,3 +25,27 @@ table {
   margin-bottom: 40px;
   border-spacing: 10px;
 }
+
+.course {
+  text-decoration: underline;
+}
+
+.grade-a {
+  color: #73CE68;
+}
+
+.grade-b {
+  color: #5395E2;
+}
+
+.grade-c {
+  color: #F0A72F;
+}
+
+.grade-d {
+  color: #EA5567;
+}
+
+a {
+  color: black;
+}
