@@ -19,18 +19,22 @@ var getKey = function() {
 }
 
 var getSecretNumber = function(callback) {
-  var key = getKey();
-  chrome.storage.sync.get(key, function(result) {
-    callback(result[key]);
+  chrome.storage.sync.get('mycourses', function(result) {
+    if (result['mycourses'][getKey()]) {
+      callback(result['mycourses'][getKey()]['secretNumber']);
+    } else {
+      callback(0);
+    }
   });
 }
 
 var setSecretNumber = function(secretNumber, callback) {
-  var key = getKey();
-  var obj = {};
-  obj[key] = secretNumber;
-  chrome.storage.sync.set(obj, function() {
-    callback();
+  chrome.storage.sync.get('mycourses', function(result) {
+    var courses = result['mycourses'];
+    courses[getKey()] = {secretNumber: secretNumber, url: document.URL, name: getCourse()};
+    chrome.storage.sync.set({'mycourses': courses}, function() {
+      callback();
+    });
   });
 }
 

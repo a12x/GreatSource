@@ -15,11 +15,11 @@ footer,header,hgroup,menu,nav,section {
   text-align: center;
 }
 
-body {
+.great-body {
   font-family: 'PT Sans', sans-serif;
 }
 
-table {
+.great-table {
   margin: 0 auto;
   margin-top: 60px;
   margin-bottom: 40px;
@@ -46,6 +46,6 @@ table {
   color: #EA5567;
 }
 
-a {
+.great-link {
   color: black;
 }
