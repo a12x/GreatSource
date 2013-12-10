@@ -1,6 +1,12 @@
 $('body').hide();
 
 chrome.storage.sync.get('mycourses', function(result) {
+  if ($.isEmptyObject(result)) {
+    $('body').fadeIn(0);
+    $('#add-another').hide();
+    return;
+  }
+
   $('.great-table').empty();
 
   var keys = Object.keys(result['mycourses']);

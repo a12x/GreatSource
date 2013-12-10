@@ -20,7 +20,7 @@ var getKey = function() {
 
 var getSecretNumber = function(callback) {
   chrome.storage.sync.get('mycourses', function(result) {
-    if (result['mycourses'][getKey()]) {
+    if (result['mycourses'] && result['mycourses'][getKey()]) {
       callback(result['mycourses'][getKey()]['secretNumber']);
     } else {
       callback(0);
@@ -30,7 +30,7 @@ var getSecretNumber = function(callback) {
 
 var setSecretNumber = function(secretNumber, callback) {
   chrome.storage.sync.get('mycourses', function(result) {
-    var courses = result['mycourses'];
+    var courses = result['mycourses'] ? result['mycourses'] : {};
     courses[getKey()] = {
       secretNumber: secretNumber,
       url: document.URL,
