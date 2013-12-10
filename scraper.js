@@ -4,15 +4,19 @@
 
 // need to fix which table it pulls from.
 
+var getGradeTable = function(html) {
+  return html.find('table:contains("Secret Number") tr:gt(2)');
+}
+
 var getEnrolledCount = function(html) {
-  return html.find('table:eq(3) tr:gt(2)').length;
+  return getGradeTable(html).length;
 }
 
 var getRank = function(html, mySecretNumber) {
   var rank = 0;
   var lastScore = -1;
 
-  html.find('table:eq(3) tr:gt(2)').each(function(index, elem) {
+  getGradeTable(html).each(function(index, elem) {
     var secretNumber = $(elem).find('td:eq(0)').text();
     var score = $(elem).find('td:eq(-1)').text();
 
@@ -31,7 +35,7 @@ var getRank = function(html, mySecretNumber) {
 var getPercent = function(html, mySecretNumber) {
   var score = -1;
 
-  html.find('table:eq(3) tr:gt(2)').each(function(index, elem) {
+  getGradeTable(html).each(function(index, elem) {
     var secretNumber = $(elem).find('td:eq(0)').text();
     score = $(elem).find('td:eq(-1)').text();
 
