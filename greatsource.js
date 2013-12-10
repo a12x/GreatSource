@@ -82,6 +82,16 @@ if (window.location.pathname === "/") {
       <a href="/home" class="footer-link">New Home</a> \
     </div>'
   );
+  $(".footer-link").click(function() {
+    chrome.storage.sync.set({showNewHomepage: "true"}, function() {
+      window.location = "http://gradesource.com/home";
+    });
+  });
+  chrome.storage.sync.get('showNewHomepage', function(result) {
+    if (result['showNewHomepage'] === "true") {
+      window.location = "http://gradesource.com/home";
+    }
+  });
 }
 
 // if we're on a course standings page
