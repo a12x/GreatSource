@@ -44,7 +44,7 @@ var getClassForPercentile = function(percentile) {
 }
 
 $('.footer-link').click(function(e) {
-  chrome.storage.sync.set({showNewHomepage: "false"}, function() {
+  chrome.storage.sync.set({showOldHomepage: "true"}, function() {
     window.location = "http://gradesource.com/";
   });
 });

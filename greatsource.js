@@ -83,12 +83,12 @@ if (window.location.pathname === "/") {
     </div>'
   );
   $(".footer-link").click(function() {
-    chrome.storage.sync.set({showNewHomepage: "true"}, function() {
+    chrome.storage.sync.set({showOldHomepage: "false"}, function() {
       window.location = "http://gradesource.com/home";
     });
   });
-  chrome.storage.sync.get('showNewHomepage', function(result) {
-    if (result['showNewHomepage'] === "true") {
+  chrome.storage.sync.get('showOldHomepage', function(result) {
+    if (result['showOldHomepage'] !== "true") {
       window.location = "http://gradesource.com/home";
     }
   });
