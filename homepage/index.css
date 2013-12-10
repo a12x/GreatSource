@@ -26,8 +26,13 @@ footer,header,hgroup,menu,nav,section {
   border-spacing: 10px;
 }
 
+.percentile {
+  text-align: left;
+}
+
 .course {
   text-decoration: underline;
+  text-align: right;
 }
 
 .grade-a {
