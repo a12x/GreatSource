@@ -22,7 +22,7 @@
   "content_scripts": [
     {
       "matches": ["http://www.gradesource.com/*", "http://gradesource.com/*"],
-      "js": ["jquery-2.0.3.min.js", "greatsource.js"],
+      "js": ["jquery-2.0.3.min.js", "scraper.js", "greatsource.js"],
       "css": ["greatsource.css"],
       "run_at": "document_end",
       "all_frames": true

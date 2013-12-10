@@ -49,3 +49,29 @@ footer,header,hgroup,menu,nav,section {
 .great-link {
   color: black;
 }
+
+.great-link:hover {
+  color: #666;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.footer-right {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 100%;
+  text-align: right;
+}
+
+.footer-link {
+  color: #CCC;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #333;
+}

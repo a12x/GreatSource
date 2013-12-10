@@ -15,7 +15,7 @@ var getID = function() {
 }
 
 var getKey = function() {
-  return getID()+'mySecretNumber';
+  return getID();
 }
 
 var getSecretNumber = function(callback) {
@@ -31,7 +31,13 @@ var getSecretNumber = function(callback) {
 var setSecretNumber = function(secretNumber, callback) {
   chrome.storage.sync.get('mycourses', function(result) {
     var courses = result['mycourses'];
-    courses[getKey()] = {secretNumber: secretNumber, url: document.URL, name: getCourse()};
+    courses[getKey()] = {
+      secretNumber: secretNumber,
+      url: document.URL,
+      name: getCourse(),
+      percent: getPercent($('body'), secretNumber),
+      percentile: getPercentile($('body'), secretNumber)
+    };
     chrome.storage.sync.set({'mycourses': courses}, function() {
       callback();
     });
@@ -68,6 +74,14 @@ var update = function() {
       }
     });
   });
+}
+
+if (window.location.pathname === "/") {
+  $('body').append(' \
+    <div class="footer-right"> \
+      <a href="/home" class="footer-link">New Home</a> \
+    </div>'
+  );
 }
 
 // if we're on a course standings page
