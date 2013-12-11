@@ -1,9 +1,3 @@
-// console.log(getPercent(html, '5366'));
-
-// console.log(getPercentile(html, '5366'));
-
-// need to fix which table it pulls from.
-
 var getGradeTable = function(html) {
   return html.find('table:contains("Secret Number") tr:gt(2)');
 }

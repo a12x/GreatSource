@@ -32,6 +32,7 @@ var setSecretNumber = function(secretNumber, callback) {
   chrome.storage.sync.get('mycourses', function(result) {
     var courses = result['mycourses'] ? result['mycourses'] : {};
     courses[getKey()] = {
+      key: getKey(),
       secretNumber: secretNumber,
       url: document.URL,
       name: getCourse(),
