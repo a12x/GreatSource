@@ -1,14 +1,14 @@
 if (document.title === 'GreatSource') {
   $('body').hide();
 
-  chrome.storage.sync.get('mycourses', function(result) {
+  chrome.storage.sync.get('my_courses', function(result) {
     if ($.isEmptyObject(result)) {
       $('body').fadeIn(0);
       $('#add-another').hide();
       return;
     }
 
-    var data = result['mycourses'];
+    var data = result['my_courses'];
 
     updateTable(data);
 
@@ -38,7 +38,7 @@ var updateCourses = function(data) {
       done--;
       if (done === 0) {
         // save and update the table
-        chrome.storage.sync.set({'mycourses': data}, function() {
+        chrome.storage.sync.set({'my_courses': data}, function() {
           updateTable(data);
         });
       }

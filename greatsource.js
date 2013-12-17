@@ -19,9 +19,9 @@ var getKey = function() {
 }
 
 var getSecretNumber = function(callback) {
-  chrome.storage.sync.get('mycourses', function(result) {
-    if (result['mycourses'] && result['mycourses'][getKey()]) {
-      callback(result['mycourses'][getKey()]['secretNumber']);
+  chrome.storage.sync.get('my_courses', function(result) {
+    if (result['my_courses'] && result['my_courses'][getKey()]) {
+      callback(result['my_courses'][getKey()]['secretNumber']);
     } else {
       callback(0);
     }
@@ -29,8 +29,8 @@ var getSecretNumber = function(callback) {
 }
 
 var setSecretNumber = function(secretNumber, callback) {
-  chrome.storage.sync.get('mycourses', function(result) {
-    var courses = result['mycourses'] ? result['mycourses'] : {};
+  chrome.storage.sync.get('my_courses', function(result) {
+    var courses = result['my_courses'] ? result['my_courses'] : {};
     courses[getKey()] = {
       key: getKey(),
       secretNumber: secretNumber,
@@ -39,7 +39,7 @@ var setSecretNumber = function(secretNumber, callback) {
       percent: getPercent($('body'), secretNumber),
       percentile: getPercentile($('body'), secretNumber)
     };
-    chrome.storage.sync.set({'mycourses': courses}, function() {
+    chrome.storage.sync.set({'my_courses': courses}, function() {
       callback();
     });
   });
