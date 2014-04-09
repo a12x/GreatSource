@@ -28,17 +28,21 @@ var getSecretNumber = function(callback) {
   });
 }
 
-var setSecretNumber = function(secretNumber, callback) {
+var toggleSecretNumber = function(secretNumber, callback) {
   chrome.storage.sync.get('my_courses', function(result) {
     var courses = result['my_courses'] ? result['my_courses'] : {};
-    courses[getKey()] = {
-      key: getKey(),
-      secretNumber: secretNumber,
-      url: document.URL,
-      name: getCourse(),
-      percent: getPercent($('body'), secretNumber),
-      percentile: getPercentile($('body'), secretNumber)
-    };
+    if (!(getKey() in courses) || courses[getKey()]["secretNumber"] != secretNumber) {
+      courses[getKey()] = {
+        key: getKey(),
+        secretNumber: secretNumber,
+        url: document.URL,
+        name: getCourse(),
+        percent: getPercent($('body'), secretNumber),
+        percentile: getPercentile($('body'), secretNumber)
+      };
+    } else {
+      delete courses[getKey()];
+    }
     chrome.storage.sync.set({'my_courses': courses}, function() {
       callback();
     });
@@ -55,7 +59,7 @@ var update = function() {
         text: secretNumber.text(),
         href: '#',
         class: 'secretnumber',
-        click: function() { setSecretNumber(secretNumber.text(), update); return false; }
+        click: function() { toggleSecretNumber(secretNumber.text(), update); return false; }
       });
       
       secretNumber.children().replaceWith(link);
